@@ -102,7 +102,7 @@ class AsciidoctorConventions {
 
 	private void configureDocResourcesRepository(Project project) {
 		project.getRepositories().maven((mavenRepo) -> {
-			mavenRepo.setUrl(URI.create("https://repo.spring.io/release"));
+			mavenRepo.setUrl(URI.create("https://maven.aliyun.com/repository/public")); // 修改为阿里云仓库
 			mavenRepo.mavenContent((mavenContent) -> mavenContent.includeGroup("io.spring.docresources"));
 		});
 	}
@@ -114,7 +114,7 @@ class AsciidoctorConventions {
 	private UnzipDocumentationResources createUnzipDocumentationResourcesTask(Project project) {
 		Configuration documentationResources = project.getConfigurations().maybeCreate("documentationResources");
 		documentationResources.getDependencies()
-				.add(project.getDependencies().create("io.spring.docresources:spring-doc-resources:0.2.5"));
+				.add(project.getDependencies().create("io.spring.docresources:spring-doc-resources:0.2.6"));
 		UnzipDocumentationResources unzipResources = project.getTasks().create("unzipDocumentationResources",
 				UnzipDocumentationResources.class);
 		unzipResources.setResources(documentationResources);
