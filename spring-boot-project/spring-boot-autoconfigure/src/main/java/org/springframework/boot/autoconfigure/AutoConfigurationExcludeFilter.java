@@ -40,14 +40,12 @@ public class AutoConfigurationExcludeFilter implements TypeFilter, BeanClassLoad
 
 	@Override
 	public void setBeanClassLoader(ClassLoader beanClassLoader) {
-		System.out.println("***************************************");
 		this.beanClassLoader = beanClassLoader;
 	}
 
 	@Override
 	public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory)
 			throws IOException {
-		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 		return isConfiguration(metadataReader) && isAutoConfiguration(metadataReader);
 	}
 
